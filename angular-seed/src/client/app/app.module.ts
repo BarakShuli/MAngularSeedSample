@@ -12,12 +12,13 @@ import { SharedModule } from './shared/shared.module';
 import { BootstrapSampleModule } from './bootstrapSample/bootstrapSample.module';
 import { RestApiSampleModule } from './restApiSample/restApiSample.module';
 import { ChatWebSocketModule } from './chatWebSocket/chatWebSocket.module';
+import { CesiumSampleModule } from './cesiumSample/cesiumSample.module';
 
 
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, 
-            BootstrapSampleModule, RestApiSampleModule, ChatWebSocketModule, SharedModule.forRoot()],
+            BootstrapSampleModule, RestApiSampleModule, ChatWebSocketModule, CesiumSampleModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

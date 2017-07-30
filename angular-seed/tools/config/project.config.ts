@@ -26,6 +26,8 @@ export class ProjectConfig extends SeedConfig {
         {src: 'lodash/lodash.min.js', inject: 'libs'},
 	      {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
         {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
+        {src: 'cesium/Build/Cesium/Cesium.js', inject: 'libs'},
+        {src: 'cesium/Build/Cesium/Widgets/widgets.css', inject: true},
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -54,6 +56,46 @@ export class ProjectConfig extends SeedConfig {
       }
     }];
     
+     additionalPackages.push({
+       name:'angular-cesium',
+       path: "node_modules/angular-cesium/bundles/angular-cesium.umd.js"
+     });
+
+     additionalPackages.push({
+       name:'rxjs',
+       path: "node_modules/rxjs/Rx.js"
+     });
+
+     additionalPackages.push({
+       name:'primitive-primitives',
+       path: "node_modules/primitive-primitives/dist/main.js"
+     })
+
+     additionalPackages.push({
+       name:'json-string-mapper',
+       path: "node_modules/json-string-mapper/bundles/json-string-mapper.umd.js"
+     });
+
+     additionalPackages.push({
+       name:'angular2parse',
+       path: "node_modules/angular2parse/bundles/angular2parse.umd.js"
+     });
+
+     additionalPackages.push({
+       name:'traceur',
+       path: "node_modules/traceur/bin/traceur.js"
+     });
+
+      additionalPackages.push({
+       name:'geodesy',
+       path: "node_modules/geodesy/npm.js"
+     });
+
+    //   name: 'ng2-translate',
+    //   // Path to the package's bundle
+    //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
+    // }];
+    //
     this.addPackagesBundles(additionalPackages);
 
     /* Add proxy middleware */

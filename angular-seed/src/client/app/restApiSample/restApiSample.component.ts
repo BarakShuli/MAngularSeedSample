@@ -24,4 +24,8 @@ export class RestApiSample implements OnInit {
     });
   }
 
+  testForTest(a:number, b:number){
+    return a < b;
+  }
+
 }
