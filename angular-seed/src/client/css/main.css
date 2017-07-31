@@ -70,5 +70,11 @@ button:hover {
   background-color: #28739e;
 }
 
-
+ac-map{
+  display:block;
+  height:100%;
+}
+sd-cesium, ac-map > div{
+  height:100%;
+}
 

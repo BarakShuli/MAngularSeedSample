@@ -1,70 +1,52 @@
+import { By }              from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
-import {
-  async,
-  TestBed
- } from '@angular/core/testing';
+import { async,ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Observable } from 'rxjs/Observable';
 
 import { RestApiSample } from './restApiSample.component';
-import { NameListService } from '../shared/name-list/name-list.service';
 
 export function main() {
-  describe('RestApiSample component', () => {
+  fdescribe('RestApiSample component', () => {
+
+    let fixture: ComponentFixture<RestApiSample>;
+    let restInstance: RestApiSample;
+    let de: DebugElement;
+    let restApiSampleDOMEL:HTMLElement;
 
     beforeEach(() => {
-
       TestBed.configureTestingModule({
         imports: [FormsModule],
-        declarations: [RestApiSample],
-        providers: [
-          { provide: NameListService, useValue: new MockNameListService() }
-        ]
+        declarations: [RestApiSample]
       });
+      TestBed
+          .compileComponents()
+          .then(() => {
+            fixture = TestBed.createComponent(RestApiSample);
+            restInstance = fixture.debugElement.componentInstance;
+            restApiSampleDOMEL = fixture.debugElement.nativeElement;
+          });
 
     });
 
-    it('should work',
-      async(() => {
-        TestBed
-          .compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(RestApiSample);
-            let homeInstance = fixture.debugElement.componentInstance;
-            let homeDOMEl = fixture.debugElement.nativeElement;
-            let mockNameListService =
-              fixture.debugElement.injector.get<any>(NameListService) as MockNameListService;
-            let nameListServiceSpy = spyOn(mockNameListService, 'get').and.callThrough();
+    // synchronous beforeEach
+    beforeEach(() => {
+      fixture = TestBed.createComponent(RestApiSample);
+      restInstance = fixture.componentInstance; // BannerComponent test instance
+      restApiSampleDOMEL = fixture.debugElement.nativeElement;
 
-            mockNameListService.returnValue = ['1', '2', '3'];
+      de = fixture.debugElement.query(By.css('h1'));
+      restApiSampleDOMEL = de.nativeElement;
+    });
 
-            fixture.detectChanges();
-
-            expect(homeInstance.nameListService).toEqual(jasmine.any(MockNameListService));
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(3);
-            expect(nameListServiceSpy.calls.count()).toBe(1);
-
-            homeInstance.newName = 'Minko';
-            homeInstance.addName();
-
-            fixture.detectChanges();
-
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(4);
-            expect(homeDOMEl.querySelectorAll('li')[3].textContent).toEqual('Minko');
-          });
-
-      }));
+    it('should display a different test title', () => {
+      restInstance.title = 'Test Title';
+      fixture.detectChanges();
+      expect(restApiSampleDOMEL.textContent).toContain('Test Title');
+    });
   });
 }
 
-class MockNameListService {
 
-  returnValue: string[];
-
-  get(): Observable<string[]> {
-    return Observable.create((observer: any) => {
-      observer.next(this.returnValue);
-      observer.complete();
-    });
-  }
-}

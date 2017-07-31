@@ -9,7 +9,7 @@ import { Http, Response} from '@angular/http';
 })
 export class RestApiSample implements OnInit {
   public someText:string = "";
-
+  title = 'Test Tour of Heroes';
   constructor(private http: Http) {}
 
   ngOnInit() {

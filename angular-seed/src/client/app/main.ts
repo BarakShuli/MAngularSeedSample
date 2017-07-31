@@ -17,7 +17,7 @@ if (String('<%= BUILD_TYPE %>') === 'prod') { enableProdMode(); }
 // let TP = new TranslationProviders();
 // TP.getTranslationFile().then((providers: any) => {
   // const options: any = { providers };
-  window["CESIUM_BASE_URL"] = "/node_modules/cesium/build/Cesium"
+  window['CESIUM_BASE_URL'] = '/node_modules/cesium/build/Cesium';
   platformBrowserDynamic().bootstrapModule(AppModule/*, options*/);
 // });
 
