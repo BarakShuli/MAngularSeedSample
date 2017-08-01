@@ -28,6 +28,8 @@ export class ProjectConfig extends SeedConfig {
         {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
         {src: 'cesium/Build/Cesium/Cesium.js', inject: 'libs'},
         {src: 'cesium/Build/Cesium/Widgets/widgets.css', inject: true},
+        {src: 'semantic-ui/dist/semantic.min.css', inject: true},
+        {src: 'semantic-ui/dist/semantic.min.js', inject: 'libs'},
         // {src: 'rxjs/**.js', inject: true}
     ];
 

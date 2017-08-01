@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
-
+declare var $: any
 /**
  * This class represents the lazy loaded HomeComponent.
  */
@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
    * Get the names OnInit
    */
   ngOnInit() {
+    $('.ui.accordion').accordion();
     this.getNames();
   }
 
